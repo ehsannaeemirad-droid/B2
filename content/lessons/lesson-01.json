@@ -1,0 +1,474 @@
+{
+  "id": "lesson-01",
+  "order": 1,
+  "title": "Marta’s New Career",
+  "subtitle": "An accountant wants a new job. She studies at night to become a teacher.",
+  "level": "A1",
+  "grammarFocus": ["present_simple", "verb_be"],
+  "estimatedMinutes": 15,
+  "vocabulary": [
+    {"en":"accountant","fa":"حسابدار","pos":"noun","example":"Marta is an accountant.","exampleFa":"مارتا حسابدار است."},
+    {"en":"career","fa":"شغل، حرفه","pos":"noun","example":"She wants a different career.","exampleFa":"او شغل دیگری می‌خواهد."},
+    {"en":"difficult","fa":"سخت","pos":"adjective","example":"The classes are difficult.","exampleFa":"کلاس‌ها سخت هستند."},
+    {"en":"give up","fa":"تسلیم شدن، دست کشیدن","pos":"verb phrase","example":"She doesn’t give up.","exampleFa":"او تسلیم نمی‌شود."},
+    {"en":"goal","fa":"هدف","pos":"noun","example":"She has a clear goal.","exampleFa":"او هدف روشنی دارد."},
+    {"en":"contact","fa":"ارتباط","pos":"noun","example":"She wants more contact with people.","exampleFa":"او ارتباط بیشتری با مردم می‌خواهد."},
+    {"en":"rewarding","fa":"رضایت‌بخش","pos":"adjective","example":"Teaching feels more rewarding.","exampleFa":"تدریس رضایت‌بخش‌تر به نظر می‌رسد."},
+    {"en":"support","fa":"حمایت کردن","pos":"verb","example":"Her family supports her.","exampleFa":"خانواده‌اش از او حمایت می‌کنند."},
+    {"en":"courage","fa":"جسارت","pos":"noun","example":"A career change needs courage.","exampleFa":"تغییر شغل جسارت لازم دارد."},
+    {"en":"practice","fa":"تمرین کردن","pos":"verb","example":"She practices in front of a mirror.","exampleFa":"او جلوی آینه تمرین می‌کند."}
+  ],
+  "reading": {
+    "chunks": [
+      {
+        "id": "chunk-1",
+        "heading": "Part 1 — Marta’s job",
+        "sentences": [
+          {
+            "id": "s1",
+            "en": "Marta is an accountant.",
+            "fa": "مارتا حسابدار است.",
+            "tokens": [
+              {"surface":"Marta","lemma":"Marta"},
+              {"surface":"is","lemma":"be","inflectionFa":"در این جمله: «است»","presentSimple":true},
+              {"surface":"an","lemma":"an"},
+              {"surface":"accountant.","lemma":"accountant"}
+            ]
+          },
+          {
+            "id": "s2",
+            "en": "She works with numbers every day, but the job doesn’t make her happy.",
+            "fa": "او هر روز با اعداد کار می‌کند، اما شغلش او را خوشحال نمی‌کند.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"works","lemma":"work","inflectionFa":"سوم‌شخص مفرد: کار می‌کند","presentSimple":true},
+              {"surface":"with","lemma":"with"},
+              {"surface":"numbers","lemma":"number","inflectionFa":"جمع"},
+              {"surface":"every","lemma":"every"},
+              {"surface":"day,","lemma":"day"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"the","lemma":"the"},
+              {"surface":"job","lemma":"job"},
+              {"surface":"doesn’t","lemma":"do","inflectionFa":"نفی سوم‌شخص مفرد: انجام نمی‌دهد","presentSimple":true},
+              {"surface":"make","lemma":"make","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"happy.","lemma":"happy"}
+            ]
+          },
+          {
+            "id": "s3",
+            "en": "She feels the same way every single day, and she wants a different career.",
+            "fa": "او هر روز دقیقاً همین احساس را دارد و شغل دیگری می‌خواهد.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"feels","lemma":"feel","inflectionFa":"سوم‌شخص مفرد: احساس می‌کند","presentSimple":true},
+              {"surface":"the","lemma":"the"},
+              {"surface":"same","lemma":"same"},
+              {"surface":"way","lemma":"way"},
+              {"surface":"every single day,","lemma":"every single day","isPhrase":true},
+              {"surface":"and","lemma":"and"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"wants","lemma":"want","inflectionFa":"سوم‌شخص مفرد: می‌خواهد","presentSimple":true},
+              {"surface":"a","lemma":"a"},
+              {"surface":"different","lemma":"different"},
+              {"surface":"career.","lemma":"career"}
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chunk-2",
+        "heading": "Part 2 — Marta studies",
+        "sentences": [
+          {
+            "id": "s4",
+            "en": "Every evening, Marta studies to become a math teacher.",
+            "fa": "هر شب، مارتا درس می‌خواند تا معلم ریاضی شود.",
+            "tokens": [
+              {"surface":"Every","lemma":"every"},
+              {"surface":"evening,","lemma":"evening"},
+              {"surface":"Marta","lemma":"Marta"},
+              {"surface":"studies","lemma":"study","inflectionFa":"سوم‌شخص مفرد: درس می‌خواند","presentSimple":true},
+              {"surface":"to","lemma":"to"},
+              {"surface":"become","lemma":"become"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"math","lemma":"math"},
+              {"surface":"teacher.","lemma":"teacher"}
+            ]
+          },
+          {
+            "id": "s5",
+            "en": "She takes classes twice a week after work.",
+            "fa": "او هفته‌ای دو بار بعد از کار کلاس می‌رود.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"takes","lemma":"take","inflectionFa":"سوم‌شخص مفرد: می‌گیرد","presentSimple":true},
+              {"surface":"classes","lemma":"class","inflectionFa":"جمع"},
+              {"surface":"twice a week","lemma":"twice a week","isPhrase":true},
+              {"surface":"after","lemma":"after"},
+              {"surface":"work.","lemma":"work"}
+            ]
+          },
+          {
+            "id": "s6",
+            "en": "It is difficult because she is tired after a long day, but she doesn’t give up.",
+            "fa": "سخت است چون بعد از یک روز طولانی خسته است، اما تسلیم نمی‌شود.",
+            "tokens": [
+              {"surface":"It","lemma":"it"},
+              {"surface":"is","lemma":"be","inflectionFa":"در این جمله: «است»","presentSimple":true},
+              {"surface":"difficult","lemma":"difficult"},
+              {"surface":"because","lemma":"because"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"is","lemma":"be","inflectionFa":"در این جمله: «است»","presentSimple":true},
+              {"surface":"tired","lemma":"tired"},
+              {"surface":"after","lemma":"after"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"long","lemma":"long"},
+              {"surface":"day,","lemma":"day"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"doesn’t give up.","lemma":"give up","isPhrase":true,"presentSimple":true}
+            ]
+          },
+          {
+            "id": "s7",
+            "en": "She has a clear goal, and that goal keeps her motivated.",
+            "fa": "او هدف روشنی دارد و آن هدف او را باانگیزه نگه می‌دارد.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"has","lemma":"have","inflectionFa":"سوم‌شخص مفرد: دارد","presentSimple":true},
+              {"surface":"a","lemma":"a"},
+              {"surface":"clear","lemma":"clear"},
+              {"surface":"goal,","lemma":"goal"},
+              {"surface":"and","lemma":"and"},
+              {"surface":"that","lemma":"that"},
+              {"surface":"goal","lemma":"goal"},
+              {"surface":"keeps","lemma":"keep","inflectionFa":"سوم‌شخص مفرد: نگه می‌دارد","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"motivated.","lemma":"motivated"}
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chunk-3",
+        "heading": "Part 3 — Why teaching",
+        "sentences": [
+          {
+            "id": "s8",
+            "en": "Marta loves people.",
+            "fa": "مارتا مردم را دوست دارد.",
+            "tokens": [
+              {"surface":"Marta","lemma":"Marta"},
+              {"surface":"loves","lemma":"love","inflectionFa":"سوم‌شخص مفرد: دوست دارد","presentSimple":true},
+              {"surface":"people.","lemma":"people"}
+            ]
+          },
+          {
+            "id": "s9",
+            "en": "She wants more contact with students, not just numbers on a screen.",
+            "fa": "او ارتباط بیشتر با دانش‌آموزان می‌خواهد، نه فقط اعداد روی صفحه.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"wants","lemma":"want","inflectionFa":"سوم‌شخص مفرد: می‌خواهد","presentSimple":true},
+              {"surface":"more","lemma":"more"},
+              {"surface":"contact","lemma":"contact"},
+              {"surface":"with","lemma":"with"},
+              {"surface":"students,","lemma":"student","inflectionFa":"جمع"},
+              {"surface":"not","lemma":"not"},
+              {"surface":"just","lemma":"just"},
+              {"surface":"numbers","lemma":"number","inflectionFa":"جمع"},
+              {"surface":"on","lemma":"on"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"screen.","lemma":"screen"}
+            ]
+          },
+          {
+            "id": "s10",
+            "en": "Numbers don’t ask questions or tell jokes, but students do.",
+            "fa": "اعداد سؤال نمی‌پرسند و جوک نمی‌گویند، اما دانش‌آموزان می‌پرسند و می‌گویند.",
+            "tokens": [
+              {"surface":"Numbers","lemma":"number","inflectionFa":"جمع"},
+              {"surface":"don’t","lemma":"do","inflectionFa":"نفی جمع: انجام نمی‌دهند","presentSimple":true},
+              {"surface":"ask","lemma":"ask","presentSimple":true},
+              {"surface":"questions","lemma":"question","inflectionFa":"جمع"},
+              {"surface":"or","lemma":"or"},
+              {"surface":"tell","lemma":"tell","presentSimple":true},
+              {"surface":"jokes,","lemma":"joke","inflectionFa":"جمع"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"students","lemma":"student","inflectionFa":"جمع"},
+              {"surface":"do.","lemma":"do","presentSimple":true}
+            ]
+          },
+          {
+            "id": "s11",
+            "en": "She thinks teaching is harder than accounting, but it’s also more rewarding.",
+            "fa": "او فکر می‌کند تدریس سخت‌تر از حسابداری است، اما رضایت‌بخش‌تر هم هست.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"thinks","lemma":"think","inflectionFa":"سوم‌شخص مفرد: فکر می‌کند","presentSimple":true},
+              {"surface":"teaching","lemma":"teaching"},
+              {"surface":"is","lemma":"be","inflectionFa":"در این جمله: «است»","presentSimple":true},
+              {"surface":"harder","lemma":"hard","inflectionFa":"تطبیقی: سخت‌تر"},
+              {"surface":"than","lemma":"than"},
+              {"surface":"accounting,","lemma":"accounting"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"it’s","lemma":"it","inflectionFa":"it’s = آن است","presentSimple":true},
+              {"surface":"also","lemma":"also"},
+              {"surface":"more","lemma":"more"},
+              {"surface":"rewarding.","lemma":"rewarding"}
+            ]
+          },
+          {
+            "id": "s12",
+            "en": "Marta’s classmates ask her many questions about numbers and money.",
+            "fa": "همکلاسی‌های مارتا سؤال‌های زیادی درباره اعداد و پول از او می‌پرسند.",
+            "tokens": [
+              {"surface":"Marta’s","lemma":"Marta","inflectionFa":"حالت ملکی: مالِ مارتا"},
+              {"surface":"classmates","lemma":"classmate","inflectionFa":"جمع"},
+              {"surface":"ask","lemma":"ask","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"many","lemma":"many"},
+              {"surface":"questions","lemma":"question","inflectionFa":"جمع"},
+              {"surface":"about","lemma":"about"},
+              {"surface":"numbers","lemma":"number","inflectionFa":"جمع"},
+              {"surface":"and","lemma":"and"},
+              {"surface":"money.","lemma":"money"}
+            ]
+          },
+          {
+            "id": "s13",
+            "en": "She likes to help them because she understands math very well.",
+            "fa": "او دوست دارد به آن‌ها کمک کند چون ریاضی را خیلی خوب می‌فهمد.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"likes","lemma":"like","inflectionFa":"سوم‌شخص مفرد: دوست دارد","presentSimple":true},
+              {"surface":"to","lemma":"to"},
+              {"surface":"help","lemma":"help","presentSimple":true},
+              {"surface":"them","lemma":"them"},
+              {"surface":"because","lemma":"because"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"understands","lemma":"understand","inflectionFa":"سوم‌شخص مفرد: می‌فهمد","presentSimple":true},
+              {"surface":"math","lemma":"math"},
+              {"surface":"very","lemma":"very"},
+              {"surface":"well.","lemma":"well"}
+            ]
+          },
+          {
+            "id": "s14",
+            "en": "She believes her accounting knowledge helps her explain things clearly, better than some other teachers.",
+            "fa": "او باور دارد دانش حسابداری‌اش به او کمک می‌کند چیزها را واضح توضیح دهد، بهتر از بعضی معلم‌های دیگر.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"believes","lemma":"believe","inflectionFa":"سوم‌شخص مفرد: باور دارد","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"accounting","lemma":"accounting"},
+              {"surface":"knowledge","lemma":"knowledge"},
+              {"surface":"helps","lemma":"help","inflectionFa":"سوم‌شخص مفرد: کمک می‌کند","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"explain","lemma":"explain","presentSimple":true},
+              {"surface":"things","lemma":"thing","inflectionFa":"جمع"},
+              {"surface":"clearly,","lemma":"clearly"},
+              {"surface":"better","lemma":"better"},
+              {"surface":"than","lemma":"than"},
+              {"surface":"some","lemma":"some"},
+              {"surface":"other","lemma":"other"},
+              {"surface":"teachers.","lemma":"teacher","inflectionFa":"جمع"}
+            ]
+          }
+        ]
+      },
+      {
+        "id": "chunk-4",
+        "heading": "Part 4 — Practice and family",
+        "sentences": [
+          {
+            "id": "s15",
+            "en": "Marta also practices in front of a mirror sometimes.",
+            "fa": "مارتا گاهی هم جلوی آینه تمرین می‌کند.",
+            "tokens": [
+              {"surface":"Marta","lemma":"Marta"},
+              {"surface":"also","lemma":"also"},
+              {"surface":"practices","lemma":"practice","inflectionFa":"سوم‌شخص مفرد: تمرین می‌کند","presentSimple":true},
+              {"surface":"in front of","lemma":"in front of"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"mirror","lemma":"mirror"},
+              {"surface":"sometimes.","lemma":"sometimes"}
+            ]
+          },
+          {
+            "id": "s16",
+            "en": "She wants to speak clearly and confidently in front of a real class one day.",
+            "fa": "او می‌خواهد یک روز جلوی یک کلاس واقعی واضح و با اعتماد به نفس صحبت کند.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"wants","lemma":"want","inflectionFa":"سوم‌شخص مفرد: می‌خواهد","presentSimple":true},
+              {"surface":"to","lemma":"to"},
+              {"surface":"speak","lemma":"speak","presentSimple":true},
+              {"surface":"clearly","lemma":"clearly"},
+              {"surface":"and","lemma":"and"},
+              {"surface":"confidently","lemma":"confidently"},
+              {"surface":"in front of","lemma":"in front of"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"real","lemma":"real"},
+              {"surface":"class","lemma":"class"},
+              {"surface":"one","lemma":"one"},
+              {"surface":"day.","lemma":"day"}
+            ]
+          },
+          {
+            "id": "s17",
+            "en": "Public speaking is new for her, and it feels a little scary, but she wants to improve.",
+            "fa": "صحبت کردن در جمع برای او تازه است و کمی ترسناک به نظر می‌رسد، اما می‌خواهد بهتر شود.",
+            "tokens": [
+              {"surface":"Public speaking","lemma":"public speaking"},
+              {"surface":"is","lemma":"be","inflectionFa":"در این جمله: «است»","presentSimple":true},
+              {"surface":"new","lemma":"new"},
+              {"surface":"for","lemma":"for"},
+              {"surface":"her,","lemma":"her"},
+              {"surface":"and","lemma":"and"},
+              {"surface":"it","lemma":"it"},
+              {"surface":"feels","lemma":"feel","inflectionFa":"سوم‌شخص مفرد: احساس می‌کند","presentSimple":true},
+              {"surface":"a","lemma":"a"},
+              {"surface":"little","lemma":"little"},
+              {"surface":"scary,","lemma":"scary"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"wants","lemma":"want","inflectionFa":"سوم‌شخص مفرد: می‌خواهد","presentSimple":true},
+              {"surface":"to","lemma":"to"},
+              {"surface":"improve.","lemma":"improve"}
+            ]
+          },
+          {
+            "id": "s18",
+            "en": "Marta’s family supports her decision.",
+            "fa": "خانواده مارتا از تصمیم او حمایت می‌کنند.",
+            "tokens": [
+              {"surface":"Marta’s","lemma":"Marta","inflectionFa":"حالت ملکی: مالِ مارتا"},
+              {"surface":"family","lemma":"family"},
+              {"surface":"supports","lemma":"support","inflectionFa":"سوم‌شخص مفرد: حمایت می‌کند","presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"decision.","lemma":"decision"}
+            ]
+          },
+          {
+            "id": "s19",
+            "en": "Her husband helps with the housework, so she has more time to study.",
+            "fa": "شوهرش در کارهای خانه کمک می‌کند، بنابراین او وقت بیشتری برای درس خواندن دارد.",
+            "tokens": [
+              {"surface":"Her","lemma":"her"},
+              {"surface":"husband","lemma":"husband"},
+              {"surface":"helps","lemma":"help","inflectionFa":"سوم‌شخص مفرد: کمک می‌کند","presentSimple":true},
+              {"surface":"with","lemma":"with"},
+              {"surface":"the","lemma":"the"},
+              {"surface":"housework,","lemma":"housework"},
+              {"surface":"so","lemma":"so"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"has","lemma":"have","inflectionFa":"سوم‌شخص مفرد: دارد","presentSimple":true},
+              {"surface":"more","lemma":"more"},
+              {"surface":"time","lemma":"time"},
+              {"surface":"to","lemma":"to"},
+              {"surface":"study.","lemma":"study"}
+            ]
+          },
+          {
+            "id": "s20",
+            "en": "Her children think it’s funny that their mother has homework too, just like them.",
+            "fa": "بچه‌هایش فکر می‌کنند خنده‌دار است که مادرشان هم مثل آن‌ها تکلیف دارد.",
+            "tokens": [
+              {"surface":"Her","lemma":"her"},
+              {"surface":"children","lemma":"children","inflectionFa":"جمع child"},
+              {"surface":"think","lemma":"think","presentSimple":true},
+              {"surface":"it’s","lemma":"it","inflectionFa":"it’s = آن است","presentSimple":true},
+              {"surface":"funny","lemma":"funny"},
+              {"surface":"that","lemma":"that"},
+              {"surface":"their","lemma":"their","inflectionFa":"مالِ آن‌ها"},
+              {"surface":"mother","lemma":"mother"},
+              {"surface":"has","lemma":"have","inflectionFa":"سوم‌شخص مفرد: دارد","presentSimple":true},
+              {"surface":"homework","lemma":"homework"},
+              {"surface":"too,","lemma":"too"},
+              {"surface":"just","lemma":"just"},
+              {"surface":"like","lemma":"like"},
+              {"surface":"them.","lemma":"them"}
+            ]
+          },
+          {
+            "id": "s21",
+            "en": "Marta believes career changes need courage, but she also believes it’s never too late to try something new.",
+            "fa": "مارتا باور دارد تغییر شغل جسارت لازم دارد، اما او همچنین باور دارد برای امتحان کردن چیزی تازه هرگز دیر نیست.",
+            "tokens": [
+              {"surface":"Marta","lemma":"Marta"},
+              {"surface":"believes","lemma":"believe","inflectionFa":"سوم‌شخص مفرد: باور دارد","presentSimple":true},
+              {"surface":"career","lemma":"career"},
+              {"surface":"changes","lemma":"change","inflectionFa":"جمع"},
+              {"surface":"need","lemma":"need","presentSimple":true},
+              {"surface":"courage,","lemma":"courage"},
+              {"surface":"but","lemma":"but"},
+              {"surface":"she","lemma":"she"},
+              {"surface":"also","lemma":"also"},
+              {"surface":"believes","lemma":"believe","inflectionFa":"سوم‌شخص مفرد: باور دارد","presentSimple":true},
+              {"surface":"it’s","lemma":"it","inflectionFa":"it’s = آن است","presentSimple":true},
+              {"surface":"never","lemma":"never"},
+              {"surface":"too","lemma":"too"},
+              {"surface":"late","lemma":"late"},
+              {"surface":"to","lemma":"to"},
+              {"surface":"try","lemma":"try","presentSimple":true},
+              {"surface":"something","lemma":"something"},
+              {"surface":"new.","lemma":"new"}
+            ]
+          },
+          {
+            "id": "s22",
+            "en": "She looks forward to her first day as a real teacher.",
+            "fa": "او منتظر اولین روزش به عنوان یک معلم واقعی است.",
+            "tokens": [
+              {"surface":"She","lemma":"she"},
+              {"surface":"looks forward to","lemma":"look forward to","isPhrase":true,"presentSimple":true},
+              {"surface":"her","lemma":"her"},
+              {"surface":"first","lemma":"first"},
+              {"surface":"day","lemma":"day"},
+              {"surface":"as","lemma":"as"},
+              {"surface":"a","lemma":"a"},
+              {"surface":"real","lemma":"real"},
+              {"surface":"teacher.","lemma":"teacher"}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "comprehension": [
+    {"id":"q1","type":"mcq","prompt":"What is Marta’s job now?","options":["A math teacher","An accountant","A student"],"answerIndex":1,"explanation":"Marta is an accountant. She works with numbers.","explanationFa":"مارتا حسابدار است. او با اعداد کار می‌کند.","sourceSentence":"s1"},
+    {"id":"q2","type":"mcq","prompt":"Why does Marta want a different career?","options":["She wants more money.","She wants more contact with people.","She is tired of the city."],"answerIndex":1,"explanation":"She wants more contact with students, not just numbers.","explanationFa":"او ارتباط بیشتر با دانش‌آموزان می‌خواهد، نه فقط اعداد.","sourceSentence":"s9"},
+    {"id":"q3","type":"truefalse","prompt":"Marta practices in front of a mirror.","options":["True","False"],"answerIndex":0,"explanation":"Yes — she practices in front of a mirror sometimes.","explanationFa":"بله — او گاهی جلوی آینه تمرین می‌کند.","sourceSentence":"s15"},
+    {"id":"q4","type":"truefalse","prompt":"Marta’s husband does all the housework.","options":["True","False"],"answerIndex":1,"explanation":"False. He helps with the housework — he doesn’t do all of it.","explanationFa":"نادرست. او در کارهای خانه کمک می‌کند، نه همه‌ی آن.","sourceSentence":"s19"},
+    {"id":"q5","type":"mcq","prompt":"What does Marta believe about career changes?","options":["They are easy.","They need courage.","They are only for young people."],"answerIndex":1,"explanation":"She believes career changes need courage, and it’s never too late.","explanationFa":"او باور دارد تغییر شغل جسارت لازم دارد و هرگز دیر نیست.","sourceSentence":"s21"}
+  ],
+  "discussion": [
+    {"id":"d1","en":"Do you ever think about changing your career?","fa":"آیا تا به حال به تغییر شغلت فکر کرده‌ای؟","frame":"Yes, I sometimes think about…","frameFa":"بله، من گاهی به ... فکر می‌کنم."},
+    {"id":"d2","en":"What job would you like to try?","fa":"دوست داری چه شغلی را امتحان کنی؟","frame":"I would like to try… because…","frameFa":"دوست دارم ... را امتحان کنم چون ..."},
+    {"id":"d3","en":"Do you prefer working with people or working with numbers?","fa":"کار با مردم را ترجیح می‌دهی یا کار با اعداد؟","frame":"I prefer working with… because…","frameFa":"من کار با ... را ترجیح می‌دهم چون ..."},
+    {"id":"d4","en":"Does your family support your goals?","fa":"آیا خانواده‌ات از هدف‌هایت حمایت می‌کند؟","frame":"Yes, my family supports… / No, my family doesn’t…","frameFa":"بله، خانواده‌ام از ... حمایت می‌کند. / نه، خانواده‌ام ... نمی‌کند."}
+  ],
+  "retelling": {
+    "prompt": "Tell Marta’s story in 30–60 seconds. Use at least 6 key words.",
+    "keyWords": [
+      {"en":"accountant","fa":"حسابدار"},
+      {"en":"not happy","fa":"خوشحال نیست"},
+      {"en":"different career","fa":"شغل دیگری"},
+      {"en":"studies at night","fa":"شب‌ها درس می‌خواند"},
+      {"en":"math teacher","fa":"معلم ریاضی"},
+      {"en":"classes twice a week","fa":"هفته‌ای دو بار کلاس"},
+      {"en":"doesn’t give up","fa":"تسلیم نمی‌شود"},
+      {"en":"contact with people","fa":"ارتباط با مردم"},
+      {"en":"mirror","fa":"آینه"},
+      {"en":"family supports her","fa":"خانواده‌اش حمایتش می‌کند"},
+      {"en":"husband helps","fa":"شوهرش کمک می‌کند"},
+      {"en":"courage","fa":"جسارت"}
+    ]
+  },
+  "askTeacher": {
+    "prompt": "Write 3 questions to ask your teacher.",
+    "helper": "Ask about a word, a sentence, or a grammar point."
+  }
+}
