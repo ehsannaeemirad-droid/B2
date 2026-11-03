@@ -28,7 +28,6 @@ export type LessonProgress = {
     audio: Record<string, string>;
   };
   retelling?: { audio?: string; checked: string[] };
-  askTeacher?: { questions: string[]; submitted?: boolean };
 };
 
 export type MissingGloss = { surface: string; lemma?: string; lessonId: string; at: string };

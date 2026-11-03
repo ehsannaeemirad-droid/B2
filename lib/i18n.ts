@@ -34,7 +34,6 @@ export const STRINGS = {
   step_comprehension: { en: "Comprehension", fa: "درک مطلب" },
   step_discussion: { en: "Discussion prep", fa: "آماده‌سازی گفتگو" },
   step_retelling: { en: "Retelling", fa: "بازگویی" },
-  step_ask_teacher: { en: "Ask your teacher", fa: "سؤال از معلم" },
   words_learned: { en: "Words learned", fa: "واژه‌های یادگرفته‌شده" },
   lessons_completed: { en: "Lessons completed", fa: "درس‌های کامل‌شده" },
   speaking_attempts: { en: "Speaking attempts", fa: "تلاش‌های گفتاری" },
@@ -48,11 +47,6 @@ export const STRINGS = {
   insert_frame: { en: "Tap to insert", fa: "برای درج بزن" },
   retell_prompt: { en: "Tick the key words you used", fa: "واژه‌های کلیدی که استفاده کردی را علامت بزن" },
   keywords_used: { en: "Key words used", fa: "واژه‌های کلیدی استفاده‌شده" },
-  ask_teacher_helper: {
-    en: "Ask about a word, a sentence, or a grammar point.",
-    fa: "درباره یک کلمه، یک جمله، یا یک نکته گرامری بپرس.",
-  },
-  submitted: { en: "Submitted", fa: "ارسال شد" },
   support_mode: { en: "Support mode", fa: "حالت پشتیبانی" },
   support_mode_hint: {
     en: "Show the Farsi under each sentence",

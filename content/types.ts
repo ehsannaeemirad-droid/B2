@@ -66,11 +66,6 @@ export type Retelling = {
   keyWords: RetellingKeyWord[];
 };
 
-export type AskTeacher = {
-  prompt: string;
-  helper: string;
-};
-
 export type Lesson = {
   id: string;
   order: number;
@@ -84,7 +79,6 @@ export type Lesson = {
   comprehension: Question[];
   discussion: DiscussionPrompt[];
   retelling: Retelling;
-  askTeacher: AskTeacher;
 };
 
 export type DictEntry = {

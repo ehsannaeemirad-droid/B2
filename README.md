@@ -1,7 +1,7 @@
 # TapRead
 
 A flipped-classroom English reading companion for adult learners (Farsi L1).
-**All 20 supplementary texts are playable**, each with the six guided steps (vocabulary, reading, comprehension, discussion prep, retelling, ask your teacher). The UI is styled after Duolingo — chunky 3D buttons, a winding lesson path and green progress.
+**All 20 supplementary texts are playable**, each with the five guided steps (vocabulary, reading, comprehension, discussion prep, retelling). The UI is styled after Duolingo — chunky 3D buttons, a winding lesson path and green progress.
 
 ## Stack
 
@@ -39,8 +39,8 @@ content/
 | Route | Screen |
 |---|---|
 | `/` | Unit banner, current-lesson card, winding 20-node path, summary stats |
-| `/lesson/lesson-XX` | Overview: metadata, grammar chips, 6-step checklist, Start/Continue |
-| `/lesson/lesson-XX/step/1…6` | Vocabulary · Reading · Comprehension · Discussion · Retelling · Ask your teacher |
+| `/lesson/lesson-XX` | Overview: metadata, grammar chips, 5-step checklist, Start/Continue |
+| `/lesson/lesson-XX/step/1…5` | Vocabulary · Reading · Comprehension · Discussion · Retelling |
 | `/settings` | Support mode, UI language (EN/فارسی), text size, teacher mode, editor, reset progress |
 
 ## Develop

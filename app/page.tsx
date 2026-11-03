@@ -124,7 +124,7 @@ export default function HomePage() {
             <p className="mt-1 text-[17px] font-extrabold leading-snug text-ink">{current.title}</p>
 
             <div className="mt-3 flex gap-1.5" aria-hidden>
-              {Array.from({ length: 6 }, (_, i) => (
+              {Array.from({ length: 5 }, (_, i) => (
                 <span
                   key={i}
                   className={cn(

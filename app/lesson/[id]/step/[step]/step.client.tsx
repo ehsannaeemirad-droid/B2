@@ -13,7 +13,6 @@ import { StepReading } from "@/components/steps/StepReading";
 import { StepComprehension } from "@/components/steps/StepComprehension";
 import { StepDiscussion } from "@/components/steps/StepDiscussion";
 import { StepRetelling } from "@/components/steps/StepRetelling";
-import { StepAskTeacher } from "@/components/steps/StepAskTeacher";
 
 export default function LessonStepPage() {
   return (
@@ -77,8 +76,6 @@ function LessonStepInner() {
       return <StepDiscussion {...shared} />;
     case 5:
       return <StepRetelling {...shared} />;
-    case 6:
-      return <StepAskTeacher {...shared} />;
     default:
       return null;
   }

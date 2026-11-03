@@ -254,10 +254,6 @@ export function buildLesson(seed: Seed, phrases: Set<string>, gloss: Map<string,
       prompt: `Retell “${seed.title}” in 30–60 seconds. Use at least 6 key words.`,
       keyWords: seed.keywords.map(([en, fa]) => ({ en, fa })),
     },
-    askTeacher: {
-      prompt: "Write 3 questions to ask your teacher.",
-      helper: "Ask about a word, a sentence, or a grammar point from this text.",
-    },
   };
 }
 

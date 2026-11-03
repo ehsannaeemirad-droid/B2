@@ -3,7 +3,7 @@
 import * as React from "react";
 import type { Lesson, RetellingKeyWord } from "@/content/types";
 import { StepChrome } from "./StepChrome";
-import { mutateLesson, markStepDone, getLessonProgress, useTapRead } from "@/lib/store";
+import { mutateLesson, markStepDone, getLessonProgress, completeLesson, useTapRead } from "@/lib/store";
 import { AppShell, Screen } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { BottomSheet } from "@/components/ui/sheet";
@@ -112,6 +112,7 @@ export function StepRetelling({
               className="w-full"
               onClick={() => {
                 markStepDone(lesson.id, 5);
+                completeLesson(lesson.id);
                 onDone();
               }}
             >

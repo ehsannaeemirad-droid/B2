@@ -190,16 +190,6 @@ export default function TeacherPage() {
           <div className="mt-2">{audioNote(progress.retelling?.audio)}</div>
         </Card>
 
-        {/* Ask your teacher */}
-        <Card className="mt-4">
-          <h2 className="text-sm font-semibold text-muted">Questions for the teacher</h2>
-          <ol className="mt-2 list-decimal space-y-1 ps-5 text-sm text-ink-soft">
-            {(progress.askTeacher?.questions ?? []).map((qq, i) => (
-              <li key={i}>{qq.trim() || <span className="text-muted">—</span>}</li>
-            ))}
-          </ol>
-        </Card>
-
         {/* Common problems */}
         <Card className="mt-4 border-danger/30">
           <h2 className="text-sm font-semibold text-danger">{STRINGS.common_problems.en} · <span className="fa">{STRINGS.common_problems.fa}</span></h2>

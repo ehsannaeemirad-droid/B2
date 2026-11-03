@@ -466,9 +466,5 @@
       {"en":"husband helps","fa":"شوهرش کمک می‌کند"},
       {"en":"courage","fa":"جسارت"}
     ]
-  },
-  "askTeacher": {
-    "prompt": "Write 3 questions to ask your teacher.",
-    "helper": "Ask about a word, a sentence, or a grammar point."
   }
 }
