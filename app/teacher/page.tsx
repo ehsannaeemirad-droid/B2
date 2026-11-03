@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AppShell, Screen } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Badge, Card } from "@/components/ui/kit";
-import { getLesson } from "@/content/registry";
+import { getLesson, REGISTRY } from "@/content/registry";
 import { useTapRead, getLessonProgress, getState } from "@/lib/store";
 import { useToast } from "@/components/ui/toast";
 import { STRINGS } from "@/lib/i18n";
@@ -14,6 +14,11 @@ export default function TeacherPage() {
   const state = useTapRead();
   const lang = state.settings.uiLang;
   const toast = useToast();
+
+  // Default to the lesson the student worked on most recently.
+  const [selectedId, setSelectedId] = React.useState<string | null>(null);
+  const lastWorked = REGISTRY.find((l) => (state.lessons[l.id]?.stepsDone?.length ?? 0) > 0)?.id;
+  const lessonId = selectedId ?? lastWorked ?? "lesson-01";
 
   if (!state.settings.teacherMode) {
     return (
@@ -33,8 +38,8 @@ export default function TeacherPage() {
     );
   }
 
-  const lesson = getLesson("lesson-01", state.lessonOverrides);
-  const progress = getLessonProgress(state, "lesson-01");
+  const lesson = getLesson(lessonId, state.lessonOverrides);
+  const progress = getLessonProgress(state, lessonId);
   const vocabulary = lesson?.vocabulary ?? [];
   const comprehension = lesson?.comprehension ?? [];
   const discussion = lesson?.discussion ?? [];
@@ -42,7 +47,7 @@ export default function TeacherPage() {
   const vocabRows = vocabulary.map((v) => ({
     en: v.en,
     fa: v.fa,
-    rating: state.ratings[`lesson-01:${v.en}`] ?? null,
+    rating: state.ratings[`${lessonId}:${v.en}`] ?? null,
   }));
 
   const unknownWords = vocabRows.filter((r) => r.rating === "dontknow");
@@ -69,13 +74,28 @@ export default function TeacherPage() {
       <Screen className="print-plan">
         <header className="flex items-center justify-between py-4">
           <div>
-            <h1 className="text-xl font-semibold text-ink">Teacher view</h1>
+            <h1 className="text-xl font-extrabold text-ink">Teacher view</h1>
             <p className="text-sm text-muted">
-              {lesson?.title} · Lesson 1 · A1
+              {lesson?.title} · {REGISTRY.find((l) => l.id === lessonId)?.order ?? 1}/{REGISTRY.length}
             </p>
           </div>
-          <Badge className="bg-brand-soft text-brand-deep">{STRINGS.teacher_mode.en}</Badge>
+          <Badge className="bg-brand-soft text-[color:var(--success)]">{STRINGS.teacher_mode.en}</Badge>
         </header>
+
+        <label className="mb-3 block">
+          <span className="text-[10px] font-extrabold uppercase tracking-[1px] text-muted">Lesson</span>
+          <select
+            value={lessonId}
+            onChange={(e) => setSelectedId(e.target.value)}
+            className="mt-1 w-full rounded-2xl border-2 border-line bg-white px-3 py-2.5 text-[15px] font-bold text-ink outline-none focus:border-brand"
+          >
+            {REGISTRY.map((l) => (
+              <option key={l.id} value={l.id}>
+                {l.order}. {l.title}
+              </option>
+            ))}
+          </select>
+        </label>
 
         {/* Summary chips */}
         <div className="grid grid-cols-3 gap-2">

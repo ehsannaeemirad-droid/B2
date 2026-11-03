@@ -3,11 +3,11 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-/** Card */
+/** Card: thick soft border, generous radius — Duolingo's surface style. */
 export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("rounded-2xl border border-line bg-white p-4 shadow-[0_1px_3px_rgba(15,23,42,0.05)]", className)}
+      className={cn("rounded-2xl border-2 border-line bg-white p-4", className)}
       {...props}
     />
   );
@@ -18,7 +18,7 @@ export function Badge({ className, ...props }: React.HTMLAttributes<HTMLSpanElem
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-[0.6px]",
         className
       )}
       {...props}
@@ -26,7 +26,7 @@ export function Badge({ className, ...props }: React.HTMLAttributes<HTMLSpanElem
   );
 }
 
-/** Switch */
+/** Switch: green when on, like Duolingo's settings toggles. */
 export function Switch({
   checked,
   onCheckedChange,
@@ -47,29 +47,31 @@ export function Switch({
       onClick={() => onCheckedChange(!checked)}
       className={cn(
         "relative inline-flex h-8 w-14 shrink-0 items-center rounded-full transition-colors duration-200",
-        checked ? "bg-brand" : "bg-[#d9d6cf]",
+        checked ? "bg-brand" : "bg-[#e5e5e5]",
         className
       )}
     >
       <span
         className={cn(
-          "inline-block h-6 w-6 transform rounded-full bg-white shadow transition-transform duration-200",
-          checked ? "translate-x-7" : "translate-x-1"
+          "inline-block h-[26px] w-[26px] transform rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] transition-transform duration-200",
+          checked ? "translate-x-[27px]" : "translate-x-[3px]"
         )}
       />
     </button>
   );
 }
 
-/** Progress bar */
+/** Progress bar with the Duolingo highlight strip inside the fill. */
 export function Progress({ value, className }: { value: number; className?: string }) {
   const pct = Math.max(0, Math.min(100, value));
   return (
-    <div className={cn("h-2 w-full overflow-hidden rounded-full bg-[#e4e1da]", className)}>
+    <div className={cn("h-4 w-full overflow-hidden rounded-full bg-[#e5e5e5]", className)}>
       <div
-        className="h-full rounded-full bg-brand transition-all duration-300"
+        className="relative h-full rounded-full bg-brand transition-all duration-300"
         style={{ width: `${pct}%` }}
-      />
+      >
+        <span className="absolute inset-x-1 top-[3px] h-[4px] rounded-full bg-white/30" />
+      </div>
     </div>
   );
 }
@@ -94,7 +96,7 @@ export function ProgressRing({
   return (
     <div className={cn("relative", className)} style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e4e1da" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e5e5e5" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -126,15 +128,15 @@ export function Segmented<T extends string>({
   className?: string;
 }) {
   return (
-    <div className={cn("inline-flex rounded-xl bg-[#eceae4] p-1", className)}>
+    <div className={cn("inline-flex rounded-2xl border-2 border-line bg-white p-1", className)}>
       {options.map((o) => (
         <button
           key={o.value}
           type="button"
           onClick={() => onChange(o.value)}
           className={cn(
-            "min-h-10 grow rounded-lg px-4 text-sm font-medium transition-colors duration-150",
-            value === o.value ? "bg-white text-ink shadow-sm" : "text-muted hover:text-ink"
+            "min-h-9 grow rounded-xl px-3 text-[13px] font-extrabold transition-colors duration-150",
+            value === o.value ? "bg-brand-soft text-[color:var(--success)]" : "text-muted hover:text-ink"
           )}
         >
           {o.label}

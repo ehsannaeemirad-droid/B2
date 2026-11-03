@@ -58,7 +58,7 @@ export default function SettingsPage() {
             />
           </Row>
 
-          <Row title={`${STRINGS.app_language.en} · ${STRINGS.app_language.fa.replace("زبان برنامه", "App language")}`}>
+          <Row title={`${STRINGS.app_language.en} · ${STRINGS.app_language.fa}`}>
             <Segmented
               value={state.settings.uiLang}
               options={[

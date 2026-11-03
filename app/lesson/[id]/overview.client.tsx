@@ -5,28 +5,29 @@ import { useParams, useRouter } from "next/navigation";
 import { AppShell, Screen } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Badge, Progress } from "@/components/ui/kit";
-import { getLesson, getBundledLesson } from "@/content/registry";
-import { STRINGS, t } from "@/lib/i18n";
+import { getLesson } from "@/content/registry";
+import { STRINGS, GRAMMAR_LABELS } from "@/lib/i18n";
 import { useTapRead } from "@/lib/store";
 import { STEP_DEFS, STEP_TOTAL } from "@/components/steps/defs";
 import { cn } from "@/lib/utils";
 
-function grammarLabel(key: string, lang: "en" | "fa"): string {
-  if (key === "present_simple") return STRINGS.present_simple[lang];
-  if (key === "verb_be") return STRINGS.verb_be[lang];
-  return key;
-}
-
 export default function LessonOverviewPage() {
   return (
-    <React.Suspense fallback={
-      <div className="flex min-h-screen justify-center bg-shell">
-        <main className="w-full max-w-[480px] min-h-screen" />
-      </div>
-    }>
+    <React.Suspense
+      fallback={
+        <div className="flex min-h-screen justify-center bg-shell">
+          <main className="w-full max-w-[480px] min-h-screen" />
+        </div>
+      }
+    >
       <LessonOverviewInner />
     </React.Suspense>
   );
+}
+
+function grammarLabel(key: string, lang: "en" | "fa"): string {
+  const label = GRAMMAR_LABELS[key];
+  return label ? label[lang] : key;
 }
 
 function LessonOverviewInner() {
@@ -35,30 +36,17 @@ function LessonOverviewInner() {
   const state = useTapRead();
   const lang = state.settings.uiLang;
 
-  const lesson = React.useMemo(() => getLesson(id ?? "lesson-01", state.lessonOverrides), [id, state.lessonOverrides]);
+  const lesson = React.useMemo(
+    () => getLesson(id ?? "lesson-01", state.lessonOverrides),
+    [id, state.lessonOverrides]
+  );
 
   if (!lesson) {
     return (
       <AppShell>
         <Screen>
-          <p className="mt-16 text-center text-muted">Lesson not found.</p>
-          <Button variant="ghost" className="mx-auto mt-4" onClick={() => router.push("/")}>
-            {STRINGS.back[lang]}
-          </Button>
-        </Screen>
-      </AppShell>
-    );
-  }
-
-  const summary = getBundledLesson(id ?? "lesson-01");
-
-  if (id !== "lesson-01" && !summary) {
-    // Structurally present but locked lessons
-    return (
-      <AppShell>
-        <Screen>
-          <p className="mt-16 text-center text-muted">{t(lang, "coming_soon")}</p>
-          <Button variant="ghost" className="mx-auto mt-4" onClick={() => router.push("/")}>
+          <p className="mt-16 text-center font-bold text-muted">Lesson not found.</p>
+          <Button variant="secondary" className="mx-auto mt-4" onClick={() => router.push("/")}>
             {STRINGS.back[lang]}
           </Button>
         </Screen>
@@ -75,36 +63,50 @@ function LessonOverviewInner() {
     <AppShell>
       <Screen>
         <header className="flex items-center pt-4">
-          <Button variant="ghost" onClick={() => router.push("/")} aria-label={STRINGS.back.en} className="px-2">
+          <button
+            type="button"
+            onClick={() => router.push("/")}
+            aria-label={STRINGS.back.en}
+            className="flex h-10 w-10 items-center justify-center rounded-2xl text-[#afafaf] transition-colors hover:bg-[#f7f7f7] hover:text-muted"
+          >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </Button>
+          </button>
         </header>
 
         <div className="mt-2">
           <div className="flex items-center gap-2">
-            <Badge className="bg-brand-soft text-brand-deep">{lesson.level}</Badge>
-            <span className="text-sm text-muted">
-              · {lesson.estimatedMinutes} {STRINGS.time[lang]}
+            <Badge className="bg-brand-soft text-[color:var(--success)]">Basic 2</Badge>
+            <span className="text-[13px] font-bold text-muted">
+              {lesson.estimatedMinutes} {STRINGS.time[lang]}
             </span>
           </div>
-          <h1 className="mt-2 text-2xl font-semibold leading-tight text-ink">{lesson.title}</h1>
-          <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{lesson.subtitle}</p>
+          <h1 className="mt-2 text-[26px] font-black leading-tight text-ink">{lesson.title}</h1>
+          <p className="mt-2 text-[15px] font-semibold leading-relaxed text-ink-soft">{lesson.subtitle}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {lesson.grammarFocus.map((g) => (
-              <Badge key={g} className="border border-line bg-white text-ink-soft">
+              <Badge key={g} className="border-2 border-line bg-white text-muted">
                 {grammarLabel(g, lang)}
               </Badge>
             ))}
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-line bg-white p-4">
-          <h2 className="text-sm font-semibold text-muted">{STRINGS.steps[lang]}</h2>
-          <ul className="mt-2 divide-y divide-line">
+        <div className="mt-6 rounded-2xl border-2 border-line bg-white p-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-[11px] font-extrabold uppercase tracking-[1px] text-muted">
+              {STRINGS.steps[lang]}
+            </h2>
+            <span className="text-[11px] font-extrabold text-[color:var(--success)]">
+              {stepsDone.length}/{STEP_TOTAL}
+            </span>
+          </div>
+          <Progress value={(stepsDone.length / STEP_TOTAL) * 100} className="mt-2 h-2" />
+          <ul className="mt-3 divide-y divide-line">
             {STEP_DEFS.map((s) => {
               const unlocked = s.n <= firstIncomplete;
+              const done = stepsDone.includes(s.n);
               return (
                 <li key={s.n}>
                   <button
@@ -118,21 +120,21 @@ function LessonOverviewInner() {
                   >
                     <span
                       className={cn(
-                        "flex h-7 w-7 shrink-0 items-center justify-center rounded-full border",
-                        stepsDone.includes(s.n)
+                        "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-[12px] font-extrabold",
+                        done
                           ? "border-brand bg-brand text-white"
-                          : "border-[#d5d2ca] text-muted"
+                          : "border-line text-[#afafaf]"
                       )}
                     >
-                      {stepsDone.includes(s.n) ? (
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-                          <path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                      {done ? (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
+                          <path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       ) : (
-                        <span className="text-xs font-semibold">{s.n}</span>
+                        s.n
                       )}
                     </span>
-                    <span className="text-[15px] font-medium text-ink">{t(lang, s.key)}</span>
+                    <span className="text-[15px] font-bold text-ink">{STRINGS[s.key][lang]}</span>
                   </button>
                 </li>
               );
@@ -144,7 +146,7 @@ function LessonOverviewInner() {
           {allDone && (
             <div className="mb-4">
               <Progress value={100} />
-              <p className="mt-2 text-center text-sm text-muted">{t(lang, "done")}</p>
+              <p className="mt-2 text-center text-[13px] font-bold text-muted">{STRINGS.done[lang]}</p>
             </div>
           )}
           <Button

@@ -6,7 +6,7 @@ import { StepChrome } from "./StepChrome";
 import { markStepDone, useTapRead } from "@/lib/store";
 import { AppShell, Screen } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
-import { Switch, Progress } from "@/components/ui/kit";
+import { Progress } from "@/components/ui/kit";
 import { SentenceView } from "@/components/SentenceView";
 import { WordSheet, SentenceSheet } from "@/components/WordSheet";
 import { useToast } from "@/components/ui/toast";
@@ -27,7 +27,6 @@ export function StepReading({
   const toast = useToast();
 
   const [chunkIndex, setChunkIndex] = React.useState(0);
-  const [verbsVisible, setVerbsVisible] = React.useState(false);
   const [wordToken, setWordToken] = React.useState<Token | null>(null);
   const [wordIndex, setWordIndex] = React.useState<number | null>(null);
   const [sheetSentence, setSheetSentence] = React.useState<Sentence | null>(null);
@@ -90,39 +89,25 @@ export function StepReading({
             <StepChrome lesson={lesson} step={2} lang={lang} />
 
             <div className="mb-3">
-              <Progress value={((chunkIndex + 1) / chunks.length) * 100} />
-              <div className="mt-2 flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-ink">{chunk.heading}</h2>
-                <span className="text-sm text-muted">
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="text-lg font-extrabold leading-snug text-ink">{chunk.heading}</h2>
+                <span className="shrink-0 rounded-full bg-[#f7f7f7] px-2.5 py-1 text-[11px] font-extrabold text-muted">
                   {chunkIndex + 1}/{chunks.length}
                 </span>
               </div>
+              <Progress value={((chunkIndex + 1) / chunks.length) * 100} className="mt-2 h-2" />
             </div>
 
-            {/* Show-the-verbs toggle with legend */}
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 rounded-2xl border border-line bg-white px-4 py-2.5">
-              <label className="flex min-h-11 items-center gap-3 text-sm font-medium text-ink">
-                <Switch checked={verbsVisible} onCheckedChange={setVerbsVisible} label={STRINGS.show_verbs.en} />
-                {STRINGS.show_verbs[lang]}
-              </label>
-              <span className="rounded-md bg-accent-soft px-2 py-1 text-xs font-medium text-[#8a6d00]">
-                <span className="fa">«{STRINGS.present_simple.fa}»</span> · {STRINGS.present_simple.en}
-              </span>
-            </div>
-
-            {supportMode ? (
-              <p className="fa mb-3 text-sm text-muted">{STRINGS.tap_word.fa}</p>
-            ) : (
-              <p className="mb-3 text-sm text-muted">{STRINGS.tap_word.en}</p>
-            )}
+            <p className="mb-3 text-[13px] font-bold text-muted">
+              {supportMode ? <span className="fa">{STRINGS.tap_word.fa}</span> : STRINGS.tap_word.en}
+            </p>
           </div>
 
-          <ul className="flex flex-col gap-3 px-4 pb-28">
+          <ul className="flex flex-col gap-3 px-4 pb-32">
             {chunk.sentences.map((sentence, i) => (
               <li key={sentence.id}>
                 <SentenceView
                   sentence={sentence}
-                  verbsVisible={verbsVisible}
                   playing={playingIndex === i}
                   supportMode={supportMode}
                   onWordTap={(token, index) => {
@@ -139,16 +124,14 @@ export function StepReading({
       </AppShell>
 
       {/* Sticky controls */}
-      <div className="fixed inset-x-0 bottom-0 z-20">
-        <div className="mx-auto max-w-[480px] border-t border-line bg-page px-4 py-3">
-          <div className="flex gap-2">
-            <Button variant="secondary" className="flex-1" onClick={playChunk}>
-              {chunkPlaying ? `${STRINGS.stop[lang]} ■` : `${STRINGS.play[lang]} ▸`}
-            </Button>
-            <Button className="flex-1" onClick={nextChunk}>
-              {chunkIndex < chunks.length - 1 ? `${STRINGS.next[lang]} →` : `${STRINGS.done[lang]} ✓`}
-            </Button>
-          </div>
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t-2 border-[#f0f0f0] bg-white">
+        <div className="mx-auto flex max-w-[480px] gap-2 px-4 py-3">
+          <Button variant="secondary" className="flex-1" onClick={playChunk}>
+            {chunkPlaying ? `${STRINGS.stop[lang]} ■` : `${STRINGS.play[lang]} ▸`}
+          </Button>
+          <Button className="flex-1" onClick={nextChunk}>
+            {chunkIndex < chunks.length - 1 ? `${STRINGS.next[lang]} →` : `${STRINGS.done[lang]} ✓`}
+          </Button>
         </div>
       </div>
 

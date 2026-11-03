@@ -83,7 +83,7 @@ export function Recorder({
   const mmss = (s: number) => `${String(Math.floor(s / 60)).padStart(1, "0")}:${String(s % 60).padStart(2, "0")}`;
 
   return (
-    <div className={cn("flex items-center gap-3", className)} data-recording={recording || undefined}>
+    <div className={cn("flex flex-wrap items-center gap-2 sm:gap-3", className)} data-recording={recording || undefined}>
       {recording ? (
         <>
           <Button variant="danger" onClick={stop} className="min-w-28">
@@ -98,7 +98,7 @@ export function Recorder({
           </Button>
           {audio && (
             <>
-              <audio controls src={audio} preload="metadata" className="h-11 min-w-44 flex-1" />
+              <audio controls src={audio} preload="metadata" className="h-11 w-full flex-1 sm:min-w-44" />
               <Button variant="ghost" onClick={() => onChange(undefined)} className="shrink-0">
                 {STRINGS.rerecord[lang]}
               </Button>

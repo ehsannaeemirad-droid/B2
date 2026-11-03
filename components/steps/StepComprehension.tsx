@@ -96,7 +96,7 @@ export function StepComprehension({
                           state === "idle" && "border-line bg-white text-ink hover:border-brand/50",
                           state === "correct" && "border-success bg-success-soft text-success",
                           state === "wrong" && "border-danger bg-danger-soft text-danger",
-                          state === "dim" && "border-line bg-white text-[#b6b2a9]"
+                          state === "dim" && "border-line bg-white text-[#afafaf]"
                         )}
                       >
                         {opt}
@@ -143,7 +143,7 @@ export function StepComprehension({
             </>
           ) : (
             /* Result card */
-            <div className="mt-16 rounded-2xl border border-line bg-white p-8 text-center">
+            <div className="mt-16 rounded-2xl border-2 border-line bg-white p-8 text-center">
               <p className="text-sm text-muted">{STRINGS.your_score[lang]} · {STRINGS.your_score.fa}</p>
               <p className="mt-2 text-5xl font-bold text-ink">
                 {correctCount} <span className="text-2xl text-muted">/ {questions.length}</span>

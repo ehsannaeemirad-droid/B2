@@ -9,8 +9,6 @@ export type Token = {
   isPhrase?: boolean;
   /** Optional grammar note, e.g. "سوم‌شخص مفرد". */
   inflectionFa?: string;
-  /** Marks conjugated present-simple verbs and *be* forms for the "Show the verbs" toggle. */
-  presentSimple?: boolean;
 };
 
 export type Sentence = {

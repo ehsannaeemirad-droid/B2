@@ -1,5 +1,10 @@
 import type { Lesson, Dictionary, DictEntry } from "./types";
 import lesson01Json from "./lessons/lesson-01.json";
+import dictionaryJson from "./dictionary.json";
+import { CORE_LEXICON } from "./lexicon";
+import { buildLessons, buildVocabGlossary, lessonIdFor, type Seed } from "./lessons/build";
+import { SUPPLEMENTARY_1 } from "./lessons/supplementary-1";
+import { SUPPLEMENTARY_2 } from "./lessons/supplementary-2";
 
 export type LessonStatus = "ready" | "coming-soon";
 
@@ -10,39 +15,25 @@ export type LessonSummary = {
   status: LessonStatus;
 };
 
-export const LESSON_TITLES: string[] = [
-  "Marta’s New Career",
-  "Tired in the Mornings",
-  "5 Habits That Help People Save Money",
-  "Stuck on My Phone",
-  "5 Hobbies People Often Miss",
-  "A Musician’s Routine",
-  "5 Popular Areas to Live in the City",
-  "A Real Estate Agent",
-  "Sleepless Downstairs",
-  "5 Common Reasons People Move to a New Country",
-  "Training for a Marathon",
-  "Afraid to Start Again",
-  "5 Habits That Can Improve Your Health",
-  "A Physiotherapist",
-  "Overspending and Embarrassed",
-  "5 Simple Ways to Spend Less While Shopping",
-  "A Personal Stylist",
-  "5 Good Reasons to Learn a New Language",
-  "Homesick and Tired",
-  "Learning a New Language as an Adult",
-];
+const SEEDS: Seed[] = [...SUPPLEMENTARY_1, ...SUPPLEMENTARY_2];
 
-export const REGISTRY: LessonSummary[] = LESSON_TITLES.map((title, i) => ({
-  id: `lesson-${String(i + 1).padStart(2, "0")}`,
-  order: i + 1,
-  title,
-  status: i === 0 ? ("ready" as const) : ("coming-soon" as const),
-}));
+export const REGISTRY: LessonSummary[] = [
+  { id: "lesson-01", order: 1, title: "Marta’s New Career", status: "ready" },
+  ...SEEDS.map((seed) => ({
+    id: lessonIdFor(seed.n),
+    order: seed.n,
+    title: seed.title,
+    status: "ready" as const,
+  })),
+];
 
 const bundled = new Map<string, Lesson>([
   ["lesson-01", lesson01Json as unknown as Lesson],
+  ...buildLessons(SEEDS).map((lesson): [string, Lesson] => [lesson.id, lesson]),
 ]);
+
+/** Glosses contributed by each lesson's vocabulary table (word → meaning + example). */
+const vocabGlossary = buildVocabGlossary(SEEDS);
 
 export function getBundledLesson(id: string): Lesson | null {
   return bundled.get(id) ?? null;
@@ -50,7 +41,7 @@ export function getBundledLesson(id: string): Lesson | null {
 
 /**
  * Returns the lesson, preferring an edited override saved in localStorage over
- * the bundled JSON. Client-only (needs the store); falls back to bundled JSON.
+ * the bundled content. Client-only (needs the store); falls back to bundled data.
  */
 export function getLesson(id: string, overrides?: Record<string, unknown>): Lesson | null {
   const override = overrides?.[id];
@@ -61,7 +52,7 @@ export function getLesson(id: string, overrides?: Record<string, unknown>): Less
 }
 
 let dictionaryIndex: Map<string, DictEntry> | null = null;
-import dictionaryJson from "./dictionary.json";
+let coreIndex: Map<string, DictEntry> | null = null;
 
 export function getDictionary(): Map<string, DictEntry> {
   if (!dictionaryIndex) {
@@ -73,8 +64,19 @@ export function getDictionary(): Map<string, DictEntry> {
   return dictionaryIndex;
 }
 
+/** Shared high-frequency words, used after the base dictionary and lesson vocabulary. */
+function getCoreLexicon(): Map<string, DictEntry> {
+  if (!coreIndex) {
+    coreIndex = new Map<string, DictEntry>();
+    for (const [lemma, fa, pos] of CORE_LEXICON) {
+      if (!coreIndex.has(lemma)) coreIndex.set(lemma, { lemma, fa, pos });
+    }
+  }
+  return coreIndex;
+}
+
 export function lookupDictionary(lemma: string): DictEntry | undefined {
-  return getDictionary().get(lemma);
+  return getDictionary().get(lemma) ?? vocabGlossary.get(lemma) ?? getCoreLexicon().get(lemma);
 }
 
 /** Total number of reading chunks in a lesson (for progress math). */

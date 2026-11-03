@@ -80,7 +80,7 @@ export function StepRetelling({
                       if (e.shiftKey) return;
                       setGloss(kw);
                     }}
-                    className="h-11 min-w-11 rounded-full border border-line bg-white px-3 text-sm font-medium text-ink hover:border-brand/50"
+                    className="h-11 min-w-11 rounded-full border-2 border-line bg-white px-3 text-sm font-medium text-ink hover:border-brand/50"
                     aria-label={`${kw.en} — ${kw.fa}`}
                   >
                     {kw.en}
@@ -103,7 +103,7 @@ export function StepRetelling({
             })}
           </ul>
 
-          <div className="mt-6 rounded-2xl border border-line bg-white p-4">
+          <div className="mt-6 rounded-2xl border-2 border-line bg-white p-4">
             <Recorder lang={lang} audio={audio} onChange={setAudio} seconds={60} />
           </div>
 

@@ -1,7 +1,7 @@
 # TapRead
 
-A flipped-classroom English reading companion for adult A1 learners (Farsi L1).
-**Lesson 1 ("Marta's New Career") is fully functional; Lessons 2–20 are locked placeholders** showing a "Coming soon" pill.
+A flipped-classroom English reading companion for adult learners (Farsi L1).
+**All 20 supplementary texts are playable**, each with the six guided steps (vocabulary, reading, comprehension, discussion prep, retelling, ask your teacher). The UI is styled after Duolingo — chunky 3D buttons, a winding lesson path and green progress.
 
 ## Stack
 
@@ -14,15 +14,19 @@ A flipped-classroom English reading companion for adult A1 learners (Farsi L1).
 
 ```
 content/
-  registry.ts             # ordered 20-lesson list + lesson/dictionary loaders (override-aware)
-  lessons/lesson-01.json  # full Lesson 1 (vocabulary, tokenized sentences, quiz, discussion, retelling)
-  dictionary.json         # shared glossary, matched on `lemma`
-  types.ts                # Lesson/Token/… types
+  registry.ts                 # ordered 20-lesson list + lesson/dictionary loaders (override-aware)
+  lessons/lesson-01.json      # hand-tokenized Lesson 1 (kept as the reference example)
+  lessons/supplementary-1.ts  # compact seeds for lessons 2–10 (text, Farsi, vocab, quiz…)
+  lessons/supplementary-2.ts  # compact seeds for lessons 11–20
+  lessons/build.ts            # seed → Lesson: tokenizer, phrase matching, lemma resolution
+  dictionary.json             # shared glossary, matched on `lemma`
+  types.ts                    # Lesson/Token/… types
 ```
+
+- Supplementary lessons are authored as **seeds** (sentence pairs, vocabulary rows, quiz items) and built at load time: `buildLesson` splits each sentence into tokens, keeps multi-word units together and resolves each word to a dictionary lemma (falling back to the lesson's own vocabulary table, then to «ترجمه به‌زودی»).
 
 - Every English sentence carries `tokens` that **cover the sentence exactly when joined with spaces**. A token with a `lemma` looks up `dictionary.json`; without it, the learner sees «ترجمه به‌زودی» and the tap is logged to `missingGlosses`.
 - Multi-word units (`give up`, `in front of`, `look forward to`, `public speaking`, `every single day`, `twice a week`) are single `isPhrase` tokens (dotted underline).
-- `presentSimple: true` on a token marks it for the "Show the verbs" amber highlight.
 - Retelling key words carry their own Farsi gloss (`{ en, fa }`).
 
 ## Editing content without a code editor
@@ -34,9 +38,9 @@ content/
 
 | Route | Screen |
 |---|---|
-| `/` | Winding 20-node lesson path, progress ring, summary stats |
-| `/lesson/lesson-01` | Overview: metadata, grammar chips, 6-step checklist, Start/Continue |
-| `/lesson/lesson-01/step/1…6` | Vocabulary · Reading · Comprehension · Discussion · Retelling · Ask your teacher |
+| `/` | Unit banner, current-lesson card, winding 20-node path, summary stats |
+| `/lesson/lesson-XX` | Overview: metadata, grammar chips, 6-step checklist, Start/Continue |
+| `/lesson/lesson-XX/step/1…6` | Vocabulary · Reading · Comprehension · Discussion · Retelling · Ask your teacher |
 | `/settings` | Support mode, UI language (EN/فارسی), text size, teacher mode, editor, reset progress |
 
 ## Develop

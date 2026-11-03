@@ -51,7 +51,7 @@ export function StepVocabulary({
           const rating = state.ratings[key];
           const open = Boolean(revealed[card.en]);
           return (
-            <li key={card.en} className="rounded-2xl border border-line bg-white p-4">
+            <li key={card.en} className="rounded-2xl border-2 border-line bg-white p-4">
               <div className="flex items-center justify-between gap-3">
                 <button
                   type="button"

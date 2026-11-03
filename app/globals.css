@@ -1,22 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Palette */
-  --ink: #0f172a;
-  --ink-soft: #475569;
-  --page: #faf9f6;
-  --shell: #e9e7e1;
-  --teal: #0e7c7b;
-  --teal-deep: #0b605f;
-  --teal-soft: #e3f0ef;
-  --amber: #f5b301;
-  --amber-soft: #fdf3d9;
-  --line: #e6e3dc;
-  --muted: #64748b;
-  --danger: #c2410c;
-  --danger-soft: #fdeae0;
-  --success: #157f3d;
-  --success-soft: #e4f2e7;
+  /* Duolingo-inspired palette */
+  --ink: #3c3c3c;
+  --ink-soft: #6f6f6f;
+  --page: #ffffff;
+  --shell: #f7f7f7;
+  --teal: #58cc02;
+  --teal-deep: #46a302;
+  --teal-soft: #e5f8d2;
+  --amber: #ffc800;
+  --amber-soft: #fff4cc;
+  --line: #e5e5e5;
+  --muted: #777777;
+  --danger: #ea2b2b;
+  --danger-soft: #ffe4e4;
+  --success: #58a700;
+  --success-soft: #d7ffb8;
+  --blue: #1cb0f6;
+  --blue-soft: #ddf4ff;
+  --purple: #ce82ff;
 }
 
 @theme inline {
@@ -35,7 +38,9 @@
   --color-danger-soft: var(--danger-soft);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --color-sky: var(--blue);
+  --color-sky-soft: var(--blue-soft);
+  --font-sans: var(--font-nunito), "Nunito", system-ui, sans-serif;
   --font-fa: var(--font-vazirmatn), "Vazirmatn", "Tahoma", system-ui, sans-serif;
 }
 
@@ -49,8 +54,13 @@ html[data-text-size="large"] {
 body {
   background: var(--shell);
   color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-nunito), "Nunito", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Long English reading text keeps a neutral, highly legible face. */
+.reading-en {
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 /* Farsi islands inside the LTR page */
@@ -81,7 +91,21 @@ body {
 
 /* Dotted underline for multi-word phrase tokens */
 .token-phrase {
-  border-bottom: 1.5px dotted var(--muted);
+  border-bottom: 2px dotted var(--muted);
+}
+
+/* The current lesson on the path gently pulses, like Duolingo's active node. */
+@keyframes node-pop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+.node-current {
+  animation: node-pop 1.8s ease-in-out infinite;
 }
 
 /* Sheet slide-up animation */

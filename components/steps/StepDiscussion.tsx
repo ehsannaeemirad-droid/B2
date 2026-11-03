@@ -118,7 +118,7 @@ export function StepDiscussion({
                         placeholder={`${STRINGS.type_here.en}
 ${STRINGS.type_here.fa}`}
                         rows={4}
-                        className="mt-3 w-full resize-y rounded-xl border border-line bg-white px-3 py-2.5 text-[15px] leading-relaxed text-ink outline-none placeholder:text-[#b6b2a9] focus:border-brand/60"
+                        className="mt-3 w-full resize-y rounded-2xl border-2 border-line bg-white px-3 py-2.5 text-[15px] leading-relaxed text-ink outline-none placeholder:text-[#afafaf] focus:border-brand/60"
                       />
 
                       <div className="mt-3">

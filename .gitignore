@@ -42,3 +42,6 @@ next-env.d.ts
 /freebuff-sites-build/
 /.open-next/
 /.wrangler/
+.dev.log
+.cloud-attachments/
+screenshots/

@@ -42,14 +42,14 @@ export function StepAskTeacher({
       <AppShell>
         <Screen>
           <StepChrome lesson={lesson} step={6} lang={lang} />
-          <div className="mx-auto mt-20 max-w-sm rounded-2xl border border-line bg-white p-8 text-center">
+          <div className="mx-auto mt-20 max-w-sm rounded-2xl border-2 border-line bg-white p-8 text-center">
             <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path d="M5 12.5l4.2 4.2L19 7" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
             <p className="mt-4 text-xl font-semibold text-ink">{STRINGS.submitted.en} · <span className="fa">{STRINGS.submitted.fa}</span></p>
-            <p className="mt-2 text-sm text-muted">Lesson 1 complete.</p>
+            <p className="mt-2 text-sm text-muted">{lesson.title} complete.</p>
             <Button className="mt-6 w-full" onClick={() => router.push("/")}>
               {STRINGS.done[lang] + " · "}
               <span className="fa">{STRINGS.done.fa}</span>
@@ -72,7 +72,7 @@ export function StepAskTeacher({
 
           <div className="mt-4 flex flex-col gap-4 pb-28">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="rounded-2xl border border-line bg-white p-4">
+              <div key={i} className="rounded-2xl border-2 border-line bg-white p-4">
                 <label className="mb-2 block text-sm font-medium text-muted">Question {i + 1}</label>
                 <textarea
                   value={local[i]}
@@ -82,7 +82,7 @@ export function StepAskTeacher({
                     save(next);
                   }}
                   rows={2}
-                  className="w-full resize-y rounded-xl border border-line bg-page px-3 py-2.5 text-[15px] text-ink outline-none placeholder:text-[#b6b2a9] focus:border-brand/60"
+                  className="w-full resize-y rounded-2xl border-2 border-line bg-page px-3 py-2.5 text-[15px] text-ink outline-none placeholder:text-[#afafaf] focus:border-brand/60"
                   placeholder={i === 0 ? "e.g. What does “give up” mean?" : "Your question…"}
                 />
               </div>

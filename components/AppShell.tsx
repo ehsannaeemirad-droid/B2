@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useTapRead, applyDocumentSettings } from "@/lib/store";
 import { ToastProvider } from "@/components/ui/toast";
 
-/** Centers a 480px column on a neutral desktop background; applies text-size setting. */
+/** Centers a 480px column on a light desktop background; applies text-size setting. */
 export function AppShell({
   children,
   className,
@@ -24,7 +24,7 @@ export function AppShell({
       <div className="flex min-h-screen justify-center bg-shell">
         <main
           className={cn(
-            "w-full max-w-[480px] min-h-screen bg-page shadow-[0_0_40px_rgba(15,23,42,0.06)]",
+            "w-full max-w-[480px] min-h-screen bg-page shadow-[0_0_40px_rgba(60,60,60,0.05)]",
             className
           )}
         >

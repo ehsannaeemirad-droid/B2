@@ -12,7 +12,6 @@ export function cleanSurface(surface: string): string {
 
 type Props = {
   sentence: Sentence;
-  verbsVisible: boolean;
   playing: boolean;
   supportMode: boolean;
   onWordTap: (token: Token, index: number) => void;
@@ -22,7 +21,6 @@ type Props = {
 
 export function SentenceView({
   sentence,
-  verbsVisible,
   playing,
   supportMode,
   onWordTap,
@@ -62,12 +60,12 @@ export function SentenceView({
   return (
     <div
       className={cn(
-        "relative rounded-2xl border border-line bg-white p-4 pr-14 pb-5 transition-colors duration-150",
-        playing && "border-brand/50 bg-brand-soft/40"
+        "relative rounded-2xl border-2 border-line bg-white p-4 pr-14 pb-5 transition-colors duration-150",
+        playing && "border-brand bg-brand-soft/40"
       )}
       data-sentence={sentence.id}
     >
-      <p className="text-[17px] leading-loose text-ink">
+      <p className="reading-en text-[17px] leading-loose text-ink">
         {sentence.tokens.map((token, i) => (
           <React.Fragment key={`${sentence.id}-t${i}`}>
             {i > 0 && " "}
@@ -77,9 +75,8 @@ export function SentenceView({
               {...tokenHandlers(i)}
               className={cn(
                 "word-hit cursor-pointer text-start transition-colors duration-150",
-                "hover:text-brand-deep",
+                "hover:text-[color:var(--success)]",
                 token.isPhrase && "token-phrase",
-                verbsVisible && token.presentSimple && "rounded bg-accent-soft px-0.5",
                 activeTokenIndex === i && "rounded bg-accent-soft px-0.5"
               )}
             >
@@ -100,7 +97,7 @@ export function SentenceView({
         onClick={onSentenceTap}
         aria-label="Sentence translation"
         title="Sentence translation"
-        className="absolute bottom-2.5 right-2.5 flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/5 hover:text-ink"
+        className="absolute bottom-2.5 right-2.5 flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-[#f7f7f7] hover:text-ink"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
           <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />

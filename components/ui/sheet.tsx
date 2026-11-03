@@ -30,7 +30,7 @@ export function BottomSheet({
           "max-h-[80vh] overflow-y-auto"
         )}
       >
-        <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-[#d9d6cf]" />
+        <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-[#e5e5e5]" />
         <button
           type="button"
           onClick={onClose}

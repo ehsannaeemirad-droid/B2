@@ -3,6 +3,8 @@ export type UiLang = "en" | "fa";
 
 export const STRINGS = {
   app_name: { en: "TapRead", fa: "تپ‌رد" },
+  unit_supplementary: { en: "Supplementary reading", fa: "خواندن تکمیلی" },
+  start_here: { en: "Start here", fa: "از اینجا شروع کن" },
   settings: { en: "Settings", fa: "تنظیمات" },
   back: { en: "Back", fa: "بازگشت" },
   tap_word: { en: "Tap a word for its meaning", fa: "برای دیدن معنی، روی کلمه بزن" },
@@ -14,7 +16,6 @@ export const STRINGS = {
   dont_know: { en: "I don’t know", fa: "نمی‌دانم" },
   coming_soon: { en: "Coming soon", fa: "به‌زودی" },
   translation_pending: { en: "Translation coming soon", fa: "ترجمه به‌زودی" },
-  show_verbs: { en: "Show the verbs", fa: "نمایش فعل‌ها" },
   present_simple: { en: "Present simple", fa: "حال ساده" },
   verb_be: { en: "Verb ‘be’", fa: "فعل بودن" },
   start: { en: "Start", fa: "شروع" },
@@ -96,6 +97,18 @@ export const STRINGS = {
 } as const;
 
 export type StringKey = keyof typeof STRINGS;
+
+/** Grammar-focus chips shown on the lesson overview. */
+export const GRAMMAR_LABELS: Record<string, { en: string; fa: string }> = {
+  present_simple: { en: "Present simple", fa: "حال ساده" },
+  verb_be: { en: "Verb ‘be’", fa: "فعل بودن" },
+  adverbs_frequency: { en: "Adverbs of frequency", fa: "قیدهای تکرار" },
+  imperatives: { en: "Imperatives", fa: "جملات امری" },
+  quantifiers: { en: "Quantifiers", fa: "کمیت‌نماها" },
+  comparatives: { en: "Comparatives", fa: "صفات تفضیلی" },
+  wh_questions: { en: "Wh- questions", fa: "سؤال‌های wh" },
+  present_perfect: { en: "Present perfect", fa: "حال کامل" },
+};
 
 export function t(lang: UiLang, key: StringKey): string {
   return STRINGS[key][lang];

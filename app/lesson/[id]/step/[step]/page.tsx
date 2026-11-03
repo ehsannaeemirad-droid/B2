@@ -1,8 +1,13 @@
+import { REGISTRY } from "@/content/registry";
 import LessonStep from "./step.client";
 
-/** Static-export support (GitHub Pages): prerender all six steps of Lesson 1. */
+const STEP_COUNT = 6;
+
+/** Static-export support: six prerendered step pages per lesson. */
 export function generateStaticParams() {
-  return [1, 2, 3, 4, 5, 6].map((step) => ({ id: "lesson-01", step: String(step) }));
+  return REGISTRY.flatMap((lesson) =>
+    Array.from({ length: STEP_COUNT }, (_, i) => ({ id: lesson.id, step: String(i + 1) }))
+  );
 }
 
 export default function LessonStepRoute() {

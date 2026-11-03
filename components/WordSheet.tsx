@@ -68,7 +68,7 @@ export function WordSheet({
       )}
 
       {token.inflectionFa && (
-        <p className="fa mt-3 rounded-xl bg-[#f1efea] px-3 py-2 text-sm text-ink-soft">
+        <p className="fa mt-3 rounded-xl bg-[#f7f7f7] px-3 py-2 text-sm text-ink-soft">
           {displaySurface} <span aria-hidden>→</span> {token.inflectionFa}
         </p>
       )}

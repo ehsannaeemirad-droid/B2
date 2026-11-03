@@ -5,20 +5,14 @@ import Link from "next/link";
 import { AppShell, Screen } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/kit";
-import { getBundledLesson } from "@/content/registry";
+import { getBundledLesson, lookupDictionary, REGISTRY } from "@/content/registry";
 import { useTapRead, getState, saveLessonOverride, clearLessonOverride } from "@/lib/store";
 import { useToast } from "@/components/ui/toast";
 import { STRINGS } from "@/lib/i18n";
 import type { Lesson } from "@/content/types";
-import dictionaryJson from "@/content/dictionary.json";
 
 /** Everything editable lives in this one draft object. */
 type Draft = Lesson;
-
-/** Quick set of dictionary lemmas for validation. */
-const DICT_LEMMAS: Set<string> = new Set(
-  (dictionaryJson as { lemma: string }[]).map((e) => e.lemma)
-);
 
 function EditorForm({
   draft,
@@ -105,7 +99,7 @@ function EditorForm({
           {draft.comprehension.map((q, qi2) => (
             <div key={q.id} className="rounded-xl border border-line p-3">
               <input className={`${field} mb-2`} value={q.prompt} onChange={(e) => onChange((d) => ({ ...d, comprehension: d.comprehension.map((c, i) => (i === qi2 ? { ...c, prompt: e.target.value } : c)) }))} />
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 {q.options.map((o, oi) => (
                   <input
                     key={oi}
@@ -133,7 +127,7 @@ function EditorForm({
   );
 }
 
-function validate(draft: Draft, dictionary: Set<string>): { missingFa: string[]; missingDict: string[]; missingAnswer: string[] } {
+function validate(draft: Draft): { missingFa: string[]; missingDict: string[]; missingAnswer: string[] } {
   const missingFa: string[] = [];
   const missingDict: string[] = [];
   const missingAnswer: string[] = [];
@@ -141,7 +135,7 @@ function validate(draft: Draft, dictionary: Set<string>): { missingFa: string[];
     for (const s of c.sentences) {
       if (!s.fa.trim()) missingFa.push(s.id);
       for (const t of s.tokens) {
-        if (t.lemma && !dictionary.has(t.lemma)) missingDict.push(`${s.id}:${t.surface}→${t.lemma}`);
+        if (t.lemma && !lookupDictionary(t.lemma)) missingDict.push(`${s.id}:${t.surface}→${t.lemma}`);
       }
     }
   }
@@ -156,10 +150,21 @@ export default function EditorPage() {
   const lang = state.settings.uiLang;
   const toast = useToast();
 
-  const bundled = getBundledLesson("lesson-01");
-  const override = state.lessonOverrides["lesson-01"] as Lesson | undefined;
-  const [draft, setDraft] = React.useState<Draft>(() => override ?? (bundled as Lesson));
+  const defaultId =
+    REGISTRY.find((l) => (state.lessons[l.id]?.stepsDone?.length ?? 0) > 0)?.id ?? "lesson-01";
+  const [lessonId, setLessonId] = React.useState(defaultId);
+  const bundled = getBundledLesson(lessonId);
+  const override = state.lessonOverrides[lessonId] as Lesson | undefined;
+  const [draft, setDraft] = React.useState<Draft>(() => (override ?? bundled) as Lesson);
+  const [loadedFor, setLoadedFor] = React.useState(lessonId);
   const [hasChanges, setHasChanges] = React.useState(false);
+
+  // Switching lessons reloads the draft from that lesson (override or bundled).
+  if (loadedFor !== lessonId) {
+    setLoadedFor(lessonId);
+    setDraft((override ?? bundled) as Lesson);
+    setHasChanges(false);
+  }
 
   if (!state.settings.editorEnabled) {
     return (
@@ -177,11 +182,11 @@ export default function EditorPage() {
     );
   }
 
-  const problems = validate(draft, DICT_LEMMAS);
+  const problems = validate(draft);
   const allGood = problems.missingFa.length === 0 && problems.missingDict.length === 0 && problems.missingAnswer.length === 0;
 
   const save = () => {
-    saveLessonOverride("lesson-01", draft);
+    saveLessonOverride(lessonId, draft);
     setHasChanges(false);
     toast(STRINGS.saved[lang]);
   };
@@ -191,13 +196,13 @@ export default function EditorPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "lesson-01.json";
+    a.download = `${lessonId}.json`;
     a.click();
     URL.revokeObjectURL(url);
   };
 
   const resetToDefault = () => {
-    clearLessonOverride("lesson-01");
+    clearLessonOverride(lessonId);
     setDraft(bundled as Lesson);
     setHasChanges(false);
     toast(STRINGS.reset_default[lang]);
@@ -207,11 +212,26 @@ export default function EditorPage() {
     <AppShell>
       <Screen>
         <header className="flex items-center justify-between py-4">
-          <h1 className="text-xl font-semibold text-ink">Content editor</h1>
-          <Link href="/settings" className="text-sm text-brand-deep underline underline-offset-2">
+          <h1 className="text-xl font-extrabold text-ink">Content editor</h1>
+          <Link href="/settings" className="text-sm font-bold text-[color:var(--blue)] underline underline-offset-2">
             Settings
           </Link>
         </header>
+
+        <label className="mb-3 block">
+          <span className="text-[10px] font-extrabold uppercase tracking-[1px] text-muted">Lesson</span>
+          <select
+            value={lessonId}
+            onChange={(e) => setLessonId(e.target.value)}
+            className="mt-1 w-full rounded-2xl border-2 border-line bg-white px-3 py-2.5 text-[15px] font-bold text-ink outline-none focus:border-brand"
+          >
+            {REGISTRY.map((l) => (
+              <option key={l.id} value={l.id}>
+                {l.order}. {l.title}
+              </option>
+            ))}
+          </select>
+        </label>
 
         {/* Validation panel */}
         <div className={`rounded-2xl border p-4 ${allGood ? "border-success/40 bg-success-soft" : "border-accent/50 bg-accent-soft"}`}>
